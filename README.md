@@ -41,11 +41,11 @@ Output: ocrText (String variable)
 Step 3: Extract Data Using Regex
 Use Assign activities to extract data:
 
-
+~~~
 invoiceNumber = System.Text.RegularExpressions.Regex.Match(ocrText, "Invoice Number[:\s]*([A-Za-z0-9\-]+)").Groups(1).Value  
 invoiceDate = System.Text.RegularExpressions.Regex.Match(ocrText, "Date[:\s]*([0-9\/\-]+)").Groups(1).Value  
-totalAmount = System.Text.RegularExpressions.Regex.Match(ocrText, "Total Amount[:\s]*([\d,]+\.\d{2})").Groups(1).Value  
- Modify the Regex pattern based on your PDF’s layout.
+totalAmount = System.Text.RegularExpressions.Regex.Match(ocrText, "Total Amount[:\s]*([\d,]+\.\d{2})").Groups(1).Value
+~~~
 
  Step 4: Create and Write to Excel
 Use a Build Data Table activity to create a table with columns:
@@ -61,15 +61,11 @@ Run the bot.
 Open the InvoiceData.xlsx file to check if the data is entered correctly.
 
 ## OUTPUT:
-For a PDF with:
+![image](https://github.com/user-attachments/assets/4ec0ce4d-4329-449a-ac1e-185eb1391e7a)
 
-Invoice Number: INV-1023  
-Date: 12/05/2024  
-Total Amount: 5,250.00
-The Excel output will be:
+![image](https://github.com/user-attachments/assets/ffc51de5-3e48-4f29-8c38-39b755f52759)
 
-Invoice Number	Date	Total Amount
-INV-1023	12/05/2024	5,250.00
+![image](https://github.com/user-attachments/assets/a3abd43c-fbaf-46ab-9551-634d0ec2fea6)
 
 ## Result
 The UiPath robot successfully extracted key data from an image-based PDF using OCR and saved it in an Excel file for further use.
